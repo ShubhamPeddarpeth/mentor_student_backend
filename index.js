@@ -8,7 +8,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 dotenv.config();
 const corsOptions = {
-  origin: "http://frontend-domain.com", // Replace with your frontend domain
+  origin: "https://mentor-student-backend-u4lj.onrender.com", // Replace with your frontend domain
   methods: ["GET", "POST", "PATCH", "DELETE"], // Allow only specific HTTP methods
   allowedHeaders: ["Content-Type", "Authorization"], // Allow only specific headers
 };
@@ -18,6 +18,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT || 4100;
+
+app.get("/", (req, res) =>
+  res.send(`
+<div>
+<p> In Home Page </p>
+<br>
+<p>To get all mentor List -/Mentors </p>
+<br>
+<p>To get all Students List -/Students </p>
+<br>
+<p>To get mentor based on ID - /Mentors/get-mentor/:id<p>
+</div>
+`)
+);
 
 app.use("/Mentors", mentorRouter);
 app.use("/Students", studentRouter);
